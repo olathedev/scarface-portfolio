@@ -14,7 +14,9 @@ const Header = () => {
 
   useEffect(() => {
     // Timeline for smooth flow
-    const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.8 } });
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out", duration: 0.8 },
+    });
 
     tl.from(navRef.current, { opacity: 0, y: -40 })
       .from(imageRef.current, { opacity: 0, scale: 0.7 }, "-=0.4")
@@ -36,23 +38,35 @@ const Header = () => {
         },
         "-=0.5"
       )
-      .from(scrollIconRef.current, {
-        opacity: 0,
-        y: 20,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.5,
-      }, "-=0.6");
+      .from(
+        scrollIconRef.current,
+        {
+          opacity: 0,
+          y: 20,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.5,
+        },
+        "-=0.6"
+      );
   }, []);
 
   return (
     <div className="h-screen w-full flex flex-col p-4 md:p-10 items-center">
       <div ref={navRef}>
         <nav className="h-[50px] bg-[#15161A] px-6 border border-[#626468] rounded-2xl p-2.5 mb-6 flex gap-4 md:gap-8 text-[15px] items-center">
-          <Link href="/" className="text-white">Home</Link>
-          <Link href="/about" className="text-white">About</Link>
-          <Link href="/projects" className="text-white">Testimonials</Link>
-          <Link href="/contact" className="text-white">Contact</Link>
+          <Link href="/" className="text-white">
+            Home
+          </Link>
+          <Link href="/about" className="text-white">
+            About
+          </Link>
+          <Link href="/projects" className="text-white">
+            Testimonials
+          </Link>
+          <Link href="/contact" className="text-white">
+            Contact
+          </Link>
         </nav>
       </div>
 
@@ -67,13 +81,25 @@ const Header = () => {
           />
         </div>
 
-        <div ref={textRef} className="flex flex-col text-center text-white px-2">
-          <h2 className="text-[28px] text-[#47484C] md:text-[60px]">Hi, I’m Peter Adaaku —</h2>
-          <h2 className="text-[24px] md:text-[50px]">I Build Developers, Ecosystems &</h2>
-          <h2 className="text-[24px] text-[#47484C] md:text-[50px]">The Future of Work in Africa.</h2>
+        <div
+          ref={textRef}
+          className="flex flex-col text-center text-white px-2"
+        >
+          <h2 className="text-[28px] text-[#47484C] md:text-[60px]">
+            Hi, I’m Peter Adaaku —
+          </h2>
+          <h2 className="text-[24px] md:text-[50px]">
+            I Build Developers, Ecosystems &
+          </h2>
+          <h2 className="text-[24px] text-[#47484C] md:text-[50px]">
+            The Future of Work in Africa.
+          </h2>
         </div>
 
-        <div ref={buttonsRef} className="flex flex-col gap-4 md:flex-row md:gap-8 w-full items-center justify-center px-2">
+        <div
+          ref={buttonsRef}
+          className="flex flex-col gap-4 md:flex-row md:gap-8 w-full items-center justify-center px-2"
+        >
           <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C] rounded-lg text-sm md:text-base">
             <Link href="/projects" className="text-white block text-center">
               Check Out My Projects
@@ -92,7 +118,16 @@ const Header = () => {
           <span className="size-2 bg-white rounded-full"></span>
         </div>
 
-        <div ref={scrollIconRef} className="h-[40px] w-[36px] flex items-center justify-center border border-white rounded-[14px] cursor-pointer mt-6 md:h-[50px] md:w-[40px] md:mt-8">
+        <div
+          ref={scrollIconRef}
+          className="h-[40px] w-[36px] flex items-center justify-center border border-white rounded-[14px] cursor-pointer mt-6 md:h-[50px] md:w-[40px] md:mt-8"
+          onClick={() => {
+            const aboutSection = document.getElementById("about");
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        >
           <svg
             width="16"
             height="15"

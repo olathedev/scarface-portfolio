@@ -1,6 +1,7 @@
 "use client";
+
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 
 const testimonials = [
@@ -72,16 +73,18 @@ const Testimonials = () => {
   }, [currentSlide]);
 
   return (
-    <section className="flex flex-col gap-8 py-8 mt-12 relative">
+    <section className="flex flex-col gap-8 py-8 mt-12 relative px-4 md:px-0">
       <header className="flex items-center gap-3 mb-6 justify-center">
-        <h4 className="text-3xl font-bold">Testimonials / Recognition</h4>
-        <div className="w-[80px] h-[11px] bg-[#15161A] rounded-xl"></div>
+        <h4 className="text-2xl md:text-3xl font-bold text-center">
+          Testimonials / Recognition
+        </h4>
+        <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-[#15161A] rounded-xl"></div>
       </header>
 
       {/* Cards container */}
       <div
         ref={cardContainerRef}
-        className="grid grid-cols-3 gap-6 transition-all duration-300 ease-in-out"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 transition-all duration-300 ease-in-out"
       >
         {getSlideTestimonials().map((testimonial, index) => {
           const isMiddle = index === 1;
@@ -92,12 +95,11 @@ const Testimonials = () => {
                 isMiddle
                   ? "bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C]"
                   : "bg-[#08090D]"
-              } border border-[#6264684D] p-6 rounded-2xl flex flex-col gap-4`}
+              } border border-[#6264684D] p-5 sm:p-6 rounded-2xl flex flex-col gap-4`}
             >
               <p className="text-sm text-white">{testimonial.text}</p>
-
               <div className="flex gap-2 items-center">
-                <div className="size-[42px] rounded-full bg-white"></div>
+                <div className="size-10 rounded-full bg-white"></div>
                 <div>
                   <h4 className="text-white text-sm font-bold">
                     {testimonial.name}
@@ -117,31 +119,34 @@ const Testimonials = () => {
       </div>
 
       {/* Controls */}
-      <div className="flex justify-center items-center gap-8 mt-6">
-        <button
-          onClick={prevSlide}
-          className="w-10 h-10 rounded-full bg-white flex items-center cursor-pointer justify-center"
-        >
-          <ArrowLeft className="text-black" />
-        </button>
-
+      <div className="flex flex-col items-center gap-4 mt-6">
         <div className="flex gap-2">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <span
               key={index}
               className={`w-2 h-2 rounded-full ${
-                currentSlide === index ? "bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C]" : "bg-[#ffffff]"
+                currentSlide === index
+                  ? "bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C]"
+                  : "bg-[#ffffff]"
               }`}
             ></span>
           ))}
         </div>
 
-        <button
-          onClick={nextSlide}
-          className="w-10 h-10 rounded-full bg-white flex cursor-pointer items-center justify-center"
-        >
-          <ArrowRight className="text-black" />
-        </button>
+        <div className="flex justify-center items-center gap-4 md:gap-8">
+          <button
+            onClick={prevSlide}
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white flex items-center cursor-pointer justify-center"
+          >
+            <ArrowLeft className="text-black w-4 h-4 md:w-5 md:h-5" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white flex cursor-pointer items-center justify-center"
+          >
+            <ArrowRight className="text-black w-4 h-4 md:w-5 md:h-5" />
+          </button>
+        </div>
       </div>
     </section>
   );

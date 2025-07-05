@@ -34,14 +34,15 @@ const About = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col gap-8 py-8 relative px-4 md:px-0"
+      className="flex flex-col gap-8 py-4 md:py-8 relative px-4 md:px-0"
+      id="about"
     >
       {/* Header */}
       <header
         ref={headerRef}
-        className="flex items-center gap-3 mb-10 justify-center"
+        className="flex items-center gap-3 md:mb-10 justify-center"
       >
-        <h4 className="text-2xl md:text-3xl">about</h4>
+        <h4 className="text-2xl md:text-3xl font-bold">about</h4>
         <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-[#15161A] rounded-xl"></div>
       </header>
 
