@@ -23,7 +23,7 @@ const MyWork = () => {
   }, []);
 
   return (
-    <section className="flex flex-col gap-8 py-8 mt-6 md:mt-28 relative px-4 md:px-0">
+    <section className="flex flex-col gap-8 py-8 mt-6 md:mt-28 relative px-4 md:px-0" id="projects">
       <header
         ref={headerRef}
         className="flex items-center gap-3 md:mb-10 justify-center"

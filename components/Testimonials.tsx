@@ -73,7 +73,7 @@ const Testimonials = () => {
   }, [currentSlide]);
 
   return (
-    <section className="flex flex-col gap-8 py-8 mt-12 relative px-4 md:px-0">
+    <section className="flex flex-col gap-8 py-8 mt-12 relative px-4 md:px-0" id="testimonials">
       <header className="flex items-center gap-3 mb-6 justify-center">
         <h4 className="text-2xl md:text-3xl font-bold text-center">
           Testimonials / Recognition

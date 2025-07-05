@@ -55,18 +55,18 @@ const Header = () => {
     <div className="h-screen w-full flex flex-col p-4 md:p-10 items-center">
       <div ref={navRef}>
         <nav className="h-[50px] bg-[#15161A] px-6 border border-[#626468] rounded-2xl p-2.5 mb-6 flex gap-4 md:gap-8 text-[15px] items-center">
-          <Link href="/" className="text-white">
+          <a href="#home" className="text-white">
             Home
-          </Link>
-          <Link href="/about" className="text-white">
+          </a>
+          <a href="#about" className="text-white">
             About
-          </Link>
-          <Link href="/projects" className="text-white">
-            Testimonials
-          </Link>
-          <Link href="/contact" className="text-white">
+          </a>
+          <a href="#projects" className="text-white">
+            Projects
+          </a>
+          <a href="#contact" className="text-white">
             Contact
-          </Link>
+          </a>
         </nav>
       </div>
 
