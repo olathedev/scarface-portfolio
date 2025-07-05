@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #000000;
   --foreground: #171717;
+  --primary: #5505D6;
+  --secondary: #6EEF9C;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-satoshi: var(--font-satoshi);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -19,8 +23,26 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes spin-slow {
+  100% {
+    transform: rotate(360deg);
+  }
 }
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-scarface {
+  background: linear-gradient(90deg, #4B1FA6 0%, #6C2BD7 35%, #5CF0B4 70%, #1FC6A6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+body {}
