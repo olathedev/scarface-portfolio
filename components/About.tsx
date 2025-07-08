@@ -12,7 +12,9 @@ const About = () => {
   const cardsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.7 } });
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out", duration: 0.7 },
+    });
 
     tl.from(headerRef.current, { opacity: 0, y: -20 })
       .from(textRef.current, { opacity: 0, x: -30 }, "-=0.4")
@@ -47,10 +49,10 @@ const About = () => {
       </header>
 
       {/* Content */}
-      <div className="flex flex-col md:flex-row gap-10 ">
+      <div className="flex flex-col md:flex-row gap-16">
         {/* Left Text */}
-        <div className="w-full md:w-1/2" ref={textRef}>
-          <p className="text-base md:text-xl leading-relaxed md:w-2/3">
+        <div className="w-full md:w-[40%]" ref={textRef}>
+          <p className="text-base md:text-xl leading-relaxed">
             <span className="text-[26px] md:text-[35px] text-[#47484C]">
               I’m a builder
             </span>{" "}
@@ -61,22 +63,36 @@ const About = () => {
           </p>
         </div>
 
-        {/* Background Image */}
-        <Image
-          ref={imageRef}
-          src="/images/aboutscarface.png"
-          alt="Scarface Hero"
-          height={609}
-          width={552}
-          className="hidden md:block absolute left-[21rem] top-0 object-cover -z-10 border-b"
-        />
+        {/* Stacked Images - Desktop only */}
+        <div className="w-[20%] h-[300px] relative hidden md:block">
+          <div className="absolute w-full h-full -top-16">
+            <Image
+              src="/images/middle.png"
+              alt=""
+              width={122}
+              height={122}
+              className="object-cover h-[122px] w-[122px] absolute top-4 right-3 z-10"
+            />
+            <Image
+              src="/images/middle.png"
+              alt=""
+              width={198}
+              height={198}
+              className="object-cover h-[198px] w-[198px] absolute top-16 -left-12"
+            />
+            <Image
+              src="/images/middle.png"
+              alt=""
+              width={122}
+              height={122}
+              className="object-cover h-[122px] w-[122px] absolute -bottom-3 right-3 z-10"
+            />
+          </div>
+        </div>
 
         {/* Cards */}
-        <div className="w-full md:w-1/2 flex justify-end">
-          <div
-            ref={cardsRef}
-            className="flex flex-col gap-4 w-full md:w-2/3"
-          >
+        <div className="w-full md:w-[40%] flex justify-end">
+          <div ref={cardsRef} className="flex flex-col gap-4 w-full ">
             <div className="w-full py-2.5 bg-[#3A3A3B] text-center text-sm md:text-lg text-white rounded-2xl">
               Co-Founded Blockfuse Labs
             </div>
@@ -94,6 +110,31 @@ const About = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Image Stack - only on small screens */}
+      <div className="flex md:hidden justify-center gap-4 mt-8">
+        <Image
+          src="/images/middle.png"
+          alt=""
+          width={130}
+          height={130}
+          className="object-cover h-[100px] w-[100px]"
+        />
+        <Image
+          src="/images/middle.png"
+          alt=""
+          width={180}
+          height={180}
+          className="object-cover h-[150px] w-[150px]"
+        />
+        <Image
+          src="/images/middle.png"
+          alt=""
+          width={130}
+          height={130}
+          className="object-cover h-[100px] w-[100px]"
+        />
       </div>
     </section>
   );

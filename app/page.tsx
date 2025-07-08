@@ -11,6 +11,7 @@ import Works from "@/components/Works";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Link from "next/link";
+import Header2 from "@/components/Header2";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ export default function Home() {
   };
   return (
     <div className="relative w-full h-full  bg-center bg-cover">
-      <Header />
+      <Header2 />
 
       <div className="container mx-auto text-white mt-32 ">
         <About />
