@@ -70,7 +70,10 @@ const Header2 = () => {
       </div>
 
       <div className="w-full flex-1 flex flex-col justify-center gap-8 md:gap-10 p-4 md:pt-20 px-4 md:px-16">
-        <div ref={textRef} className="flex flex-col text-white px-2 text-center md:text-start">
+        <div
+          ref={textRef}
+          className="flex flex-col text-white px-2 text-center md:text-start"
+        >
           <h2 className="text-[28px] text-[#47484C] md:text-[60px]">
             Hi, I’m Peter Adaaku —
           </h2>
@@ -78,34 +81,45 @@ const Header2 = () => {
             I Build Developers, Ecosystems &
           </h2>
           <h2 className="text-[24px] text-[#47484C] md:text-[50px]">
-            The Future of Work in Africa.
+            The Future of Work in  Africa.
           </h2>
         </div>
 
         <div
           ref={buttonsRef}
-          className="flex flex-col gap-4 md:flex-row md:gap-8 w-full items-center px-2"
+          className="flex flex-col gap-4 md:flex-row md:gap-4 w-full items-center px-2"
         >
-          <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C] rounded-lg text-sm md:text-base">
+          <button className="w-full md:w-auto py-3 px-4 border-[#626468] bg-primary rounded-lg text-sm ">
             <Link href="/projects" className="text-white block text-center">
-              Check Out My Projects
+              Check Out My Track Records
             </Link>
           </button>
-          <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-[#15161A] rounded-lg text-sm md:text-base">
+          <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-[#15161A] rounded-lg text-sm md:text-">
             <Link href="/projects" className="text-white block text-center">
               Inside Blockfuse Labs
             </Link>
           </button>
         </div>
 
-        <div className="w-full md:w-[299px]">
-          <div className="py-2 px-4 text-sm md:text-base flex items-center justify-center bg-[#08090D] text-white border mt-6 border-[#626468]/30 rounded-xl gap-2 md:gap-4 text-center">
-            <span className="size-2 bg-white rounded-full"></span>
-            <span>
-              Building Africa’s Web3 Future, One Developer
-              <br className="hidden md:block" /> at a Time.
-            </span>
-            <span className="size-2 bg-white rounded-full"></span>
+        <div className="">
+          <div className="w-full md:w-[550px]">
+            <div className="py-2 px-4 text-sm md:text-base flex items-center justify-center bg-[#08090D] text-white border mt-6 border-[#626468]/30 rounded-xl gap-2 md:gap-4 text-center">
+              <span className="size-2 bg-white rounded-full"></span>
+              <span>
+                Over 3 years of professional experience building onchain
+                
+              </span>
+              <span className="size-2 bg-white rounded-full"></span>
+            </div>
+          </div>
+          <div className="w-full md:w-[550px]">
+            <div className="py-2 px-4 text-sm md:text-base flex items-center justify-center bg-[#08090D] text-white border mt-6 border-[#626468]/30 rounded-xl gap-2 md:gap-4 text-center">
+              <span className="size-2 bg-white rounded-full"></span>
+              <span>
+                Building Africa’s Web3 Future, One Developer at a Time.
+              </span>
+              <span className="size-2 bg-white rounded-full"></span>
+            </div>
           </div>
         </div>
 
@@ -139,7 +153,7 @@ const Header2 = () => {
         <img
           src="/images/hero.png"
           alt=""
-          className="absolute object-cover bottom-0 left-1/2 -translate-x-1/2 w-full md:top-4 md:right-0 md:left-auto md:w-auto md:translate-x-0 -z-10 opacity-20 md:opacity-100"
+          className="absolute object-cover bottom-0 left-1/2 -translate-x-1/2 w-full md:top-4 md:right-0 md:left-auto md:w-auto md:translate-x-0 -z-10 opacity-20 md:opacity-80"
         />
       </div>
     </div>

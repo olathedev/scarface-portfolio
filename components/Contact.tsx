@@ -33,7 +33,7 @@ const Contact = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-[#5F59D2] text-white py-2 px-4 rounded-lg hover:bg-[#47484C] text-sm mt-2"
+              className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-[#47484C] text-sm mt-2"
             >
               Subscribe
             </button>

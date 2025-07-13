@@ -29,7 +29,7 @@ const MyWork = () => {
         className="flex items-center gap-3 md:mb-10 justify-center"
       >
         <h4 className="text-2xl md:text-3xl font-bold">My Work</h4>
-        <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-[#15161A] rounded-xl"></div>
+        <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-primary opacity-40 rounded-xl"></div>
       </header>
 
       <div
