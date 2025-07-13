@@ -81,7 +81,7 @@ const Header2 = () => {
             I Build Developers, Ecosystems &
           </h2>
           <h2 className="text-[24px] text-[#47484C] md:text-[50px]">
-            The Future of Work in  Africa.
+            The Future of Work in Africa.
           </h2>
         </div>
 
@@ -90,14 +90,18 @@ const Header2 = () => {
           className="flex flex-col gap-4 md:flex-row md:gap-4 w-full items-center px-2"
         >
           <button className="w-full md:w-auto py-3 px-4 border-[#626468] bg-primary rounded-lg text-sm ">
-            <Link href="/projects" className="text-white block text-center">
+            <Link href="#professional" className="text-white block text-center">
               Check Out My Track Records
             </Link>
           </button>
           <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-[#15161A] rounded-lg text-sm md:text-">
-            <Link href="/projects" className="text-white block text-center">
+            <a
+              href="https://blockfuselabs.com/"
+              target="_blank"
+              className="text-white block text-center"
+            >
               Inside Blockfuse Labs
-            </Link>
+            </a>
           </button>
         </div>
 
@@ -107,7 +111,6 @@ const Header2 = () => {
               <span className="size-2 bg-white rounded-full"></span>
               <span>
                 Over 3 years of professional experience building onchain
-                
               </span>
               <span className="size-2 bg-white rounded-full"></span>
             </div>

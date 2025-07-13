@@ -42,39 +42,46 @@ const About = () => {
       {/* Header */}
       <header
         ref={headerRef}
-        className="flex items-center gap-3 md:mb-10 justify-center"
+        className="flex flex-col md:flex-row items-center gap-3 md:mb-10 justify-center"
       >
-        <h4 className="text-2xl md:text-3xl font-bold">About</h4>
-        <div className="w-[60px] md:w-[80px] h-[8px] opacity-40 md:h-[11px] bg-primary rounded-xl"></div>
+        <h4 className="text-xl sm:text-2xl md:text-3xl font-bold">About</h4>
+        <div className="w-[40px] sm:w-[60px] md:w-[80px] h-[6px] sm:h-[8px] md:h-[11px] opacity-40 bg-primary rounded-xl"></div>
       </header>
 
       {/* Content */}
-      <div className="flex flex-col md:flex-row gap-16">
-
-      <div className="h-[28rem] w-1/2 ">
-        <div className="h-full rounded-xl w-[98%] overflow-hidden flex items-center justify-center relative">
-          <Image
-            ref={imageRef}
-            src="/im2.JPG"
-            alt="About Image"
-            fill
-            style={{ objectFit: "cover" }}
-            className="rounded-xl border-primary"
-            priority
-          />
+      <div className="flex flex-col md:flex-row gap-10 md:gap-16">
+        <div className="h-64 sm:h-80 md:h-[28rem] w-full md:w-1/2 mb-6 md:mb-0">
+          <div className="h-full rounded-xl w-full md:w-[98%] overflow-hidden flex items-center justify-center relative">
+            <Image
+              ref={imageRef}
+              src="/im2.JPG"
+              alt="About Image"
+              fill
+              style={{ objectFit: "cover" }}
+              className="rounded-xl border-primary"
+              priority
+            />
+          </div>
         </div>
-      </div>
 
         {/* Left Text */}
-        <div className="w-full md:w-1/2" ref={textRef}>
-          <p className="text-base md:text-xl leading-relaxed">
-            <span className="text-[26px] md:text-[35px] text-[#47484C]">
+        <div className="w-full md:w-1/2 flex items-center" ref={textRef}>
+          <p className="text-sm sm:text-base md:text-xl leading-relaxed text-center md:text-left">
+            <span className="text-lg sm:text-2xl md:text-[35px] text-[#47484C] font-semibold">
               I’m a builder
             </span>{" "}
-            at heart. Over the past five years, I’ve dedicated myself to helping African developers find their voice in the global tech ecosystem. With a proven track record in the blockchain space, I have empowered countless individuals through education, community building, and innovative product development. My passion lies in unlocking opportunities for others in Web3, AI, and emerging technologies, enabling them to thrive and make a global impact. Whether mentoring aspiring developers, leading collaborative projects, or advocating for technological advancement, I am committed to driving positive change and fostering growth across Africa and beyond.
+            at heart. Over the past five years, I’ve dedicated myself to helping
+            African developers find their voice in the global tech ecosystem.
+            With a proven track record in the blockchain space, I have empowered
+            countless individuals through education, community building, and
+            innovative product development. My passion lies in unlocking
+            opportunities for others in Web3, AI, and emerging technologies,
+            enabling them to thrive and make a global impact. Whether mentoring
+            aspiring developers, leading collaborative projects, or advocating
+            for technological advancement, I am committed to driving positive
+            change and fostering growth across Africa and beyond.
           </p>
         </div>
-
 
         {/* Cards */}
       </div>

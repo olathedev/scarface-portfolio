@@ -4,7 +4,7 @@ import { ProfessionalCard } from "./ProfessionalCard";
 
 const Professional = () => {
   return (
-    <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20 mt-16 md:mt-28 px-4 md:px-0">
+    <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-20 mt-16 md:mt-28 px-4 md:px-0" id="#professional">
       <div className="w-full lg:w-1/2 flex flex-col gap-10 md:gap-20 lg:gap-44">
         <div>
           <header className="flex flex-col md:flex-row items-center gap-3 mb-2 text-center md:text-left justify-center md:justify-start">

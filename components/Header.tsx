@@ -101,14 +101,14 @@ const Header = () => {
           className="flex flex-col gap-4 md:flex-row md:gap-8 w-full items-center justify-center px-2"
         >
           <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C] rounded-lg text-sm md:text-base">
-            <Link href="/projects" className="text-white block text-center">
+            <Link href="#professional" className="text-white block text-center">
               Check Out My Projects
             </Link>
           </button>
           <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-[#15161A] rounded-lg text-sm md:text-base">
-            <Link href="/projects" className="text-white block text-center">
+            <a href="https://blockfuselabs.com/" target="_blank" className="text-white block text-center">
               Inside Blockfuse Labs
-            </Link>
+            </a>
           </button>
         </div>
 
