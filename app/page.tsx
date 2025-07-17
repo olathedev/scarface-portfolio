@@ -46,27 +46,27 @@ export default function Home() {
         </div>
       <footer className="w-full bg-[#15161A] border-t border-[#626468] text-white text-sm py-6 px-4">
         <div className="flex flex-wrap gap-4 justify-center mb-6">
-          <Link href="/" className="text-white">
+          <a href="#home" className="text-white">
             Home
-          </Link>
-          <Link href="/about" className="text-white">
+          </a>
+          <a href="#about" className="text-white">
             About
-          </Link>
-          <Link href="/projects" className="text-white">
-            Testimonials
-          </Link>
-          <Link href="/contact" className="text-white">
+          </a>
+          <a href="#projects" className="text-white">
+            Projects
+          </a>
+          <a href="#contact" className="text-white">
             Contact
-          </Link>
+          </a>
         </div>
 
         <div className="w-full bg-[#1E1E1E] px-4 py-4 text-[13px] flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 rounded-lg">
           <p className="text-center md:text-left">
-            Email me at: peter@blockfuselabs.com
+            Email me at: <a href="mailto:peter@blockfuselabs.com" className="underline">peter@blockfuselabs.com</a> | Phone: <a href="tel:+2348025463838" className="underline">+234 8025463838</a>
           </p>
 
           <div className="flex items-center gap-4 justify-center">
-            <Link href="">
+            <a href="https://web.facebook.com/AdaakuPeterjr" target="_blank" rel="noopener noreferrer">
               {/* Facebook */}
               <svg
                 width="7"
@@ -80,10 +80,9 @@ export default function Home() {
                   fill="white"
                 />
               </svg>
-            </Link>
-
-            <Link href="">
-              {/* Twitter */}
+            </a>
+            <a href="https://x.com/scarfacedoteth" target="_blank" rel="noopener noreferrer">
+              {/* Twitter/X */}
               <svg
                 width="18"
                 height="14"
@@ -96,9 +95,8 @@ export default function Home() {
                   fill="white"
                 />
               </svg>
-            </Link>
-
-            <Link href="">
+            </a>
+            <a href="https://www.linkedin.com/in/peter-adaaku/" target="_blank" rel="noopener noreferrer">
               {/* LinkedIn */}
               <svg
                 width="16"
@@ -112,9 +110,9 @@ export default function Home() {
                   fill="white"
                 />
               </svg>
-            </Link>
-
-            <Link href="">
+            </a>
+            <a href="https://github.com/scarfacedotcom" target="_blank" rel="noopener noreferrer">
+              {/* GitHub */}
               <svg
                 width="16"
                 height="16"
@@ -127,7 +125,7 @@ export default function Home() {
                   fill="white"
                 />
               </svg>
-            </Link>
+            </a>
           </div>
         </div>
       </footer>
