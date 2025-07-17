@@ -3,6 +3,9 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -12,25 +15,20 @@ const About = () => {
   const cardsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out", duration: 0.7 },
-    });
-
-    tl.from(headerRef.current, { opacity: 0, y: -20 })
-      .from(textRef.current, { opacity: 0, x: -30 }, "-=0.4")
-      .from(imageRef.current, { opacity: 0, scale: 0.9 }, "-=0.5");
-
-    if (cardsRef.current?.children) {
-      tl.from(
-        Array.from(cardsRef.current.children),
-        {
-          opacity: 0,
-          y: 20,
-          stagger: 0.2,
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out", duration: 0.7 } ,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
-        "-=0.6"
-      );
-    }
+      });
+      tl.from(headerRef.current, { opacity: 0, y: -30 })
+        .from(textRef.current, { opacity: 0, x: 40 }, "-=0.4")
+        .from(imageRef.current, { opacity: 0, scale: 0.9 }, "-=0.5");
+    }, sectionRef);
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -66,20 +64,13 @@ const About = () => {
 
         {/* Left Text */}
         <div className="w-full md:w-1/2 flex items-center" ref={textRef}>
-          <p className="text-sm sm:text-base md:text-xl leading-relaxed text-center md:text-left">
+          <p className="text-sm sm:text-base md:text-lg leading-[1.8] text-center md:text-left">
             <span className="text-lg sm:text-2xl md:text-[35px] text-[#47484C] font-semibold">
-              I’m a builder
-            </span>{" "}
-            at heart. Over the past five years, I’ve dedicated myself to helping
-            African developers find their voice in the global tech ecosystem.
-            With a proven track record in the blockchain space, I have empowered
-            countless individuals through education, community building, and
-            innovative product development. My passion lies in unlocking
-            opportunities for others in Web3, AI, and emerging technologies,
-            enabling them to thrive and make a global impact. Whether mentoring
-            aspiring developers, leading collaborative projects, or advocating
-            for technological advancement, I am committed to driving positive
-            change and fostering growth across Africa and beyond.
+              Hi, I’m Peter Adaaku Jr.
+            </span>, a passionate software engineer, educator, and community builder — and currently the CEO/Co-founder of Blockfuse Labs, a developer hub shaping Africa’s next generation of Web3 builders.
+            My journey started in Makurdi, Nigeria, where I began as a crypto enthusiast and transitioned into full-time engineering. Over time, I realized that many brilliant minds around me lacked access to proper guidance, mentorship, and technical resources. That inspired me to create Blockfuse Labs — a place where people like me could get a real shot at building a future in tech.
+            Today, I lead a growing team training developers, building products, and nurturing local blockchain ecosystems across Nigeria — from Jos to Benue and beyond. I’m committed to decentralization, community-led innovation, and empowering African youth to solve real-world problems with technology.
+            Let’s build the future, together.
           </p>
         </div>
 

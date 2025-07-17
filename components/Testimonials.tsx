@@ -7,39 +7,52 @@ import gsap from "gsap";
 const testimonials = [
   {
     id: 1,
-    text: "Lorem ipsum dolor sit amet consectetur. Morbi tristique vitae cursus cursus eu iaculis id.",
-    name: "John Doe",
-    title: "CEO, Example Corp",
+    text: "Peter’s vision and leadership at Blockfuse Labs is inspiring. His commitment to developer empowerment is shaping the future of Web3 in Africa.",
+    name: "dami.base.eth",
+    title: "West-Africa Lead, Base (Coinbase)",
+    image: "https://pbs.twimg.com/profile_images/1794683549779382272/FoXWXDnX_400x400.jpg",
   },
   {
     id: 2,
-    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    name: "Jane Smith",
-    title: "CTO, Sample Inc",
+    text: "Working at Blockfuse Labs has accelerated my growth as a blockchain engineer. The mentorship and hands-on projects are world-class.",
+    name: "Shaibu Suleman",
+    title: "Engineer, Blockfuse Labs",
   },
   {
     id: 3,
-    text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-    name: "Alice Johnson",
-    title: "CMO, CompanyX",
+    text: "Peter’s guidance helped me master Solidity and smart contract development. Blockfuse Labs is a game-changer for African devs.",
+    name: "Kingsley Kefas",
+    title: "Engineer, Blockfuse Labs",
   },
   {
     id: 4,
-    text: "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born.",
-    name: "Bob Brown",
-    title: "COO, CorpZ",
+    text: "The collaborative environment at Blockfuse Labs pushes you to innovate and solve real-world problems. I’m proud to be part of this team.",
+    name: "Emmanuel Dochi",
+    title: "Engineer, Blockfuse Labs",
   },
   {
     id: 5,
-    text: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.",
-    name: "Lisa Green",
-    title: "Lead Designer, StudioX",
+    text: "Joining Blockfuse Labs gave me the confidence and skills to build my first dApp. The support from mentors is unmatched!",
+    name: "Lucky Kamshak",
+    title: "Engineer, Blockfuse Labs",
   },
   {
     id: 6,
-    text: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled.",
-    name: "Tom Lee",
-    title: "Head of Growth, ScaleIt",
+    text: "Blockfuse Labs made blockchain accessible and fun. I learned so much and met amazing people!",
+    name: "Ola Michael",
+    title: "Student, Blockfuse Labs",
+  },
+  {
+    id: 7,
+    text: "The workshops and bootcamps at Blockfuse Labs helped me land my first internship in Web3. Highly recommended!",
+    name: "Deborah Kudaru",
+    title: "Student, Blockfuse Labs",
+  },
+  {
+    id: 8,
+    text: "I never imagined I’d understand blockchain, but Blockfuse Labs made it possible. The community is so supportive.",
+    name: "James Victor",
+    title: "Student, Blockfuse Labs",
   },
 ];
 
@@ -102,7 +115,11 @@ const Testimonials = () => {
             >
               <p className="text-sm text-white">{testimonial.text}</p>
               <div className="flex gap-2 items-center">
-                <div className="size-10 rounded-full bg-white"></div>
+                <div className="size-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
+                  {testimonial.image ? (
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 object-cover rounded-full" />
+                  ) : null}
+                </div>
                 <div>
                   <h4 className="text-white text-sm font-bold">
                     {testimonial.name}

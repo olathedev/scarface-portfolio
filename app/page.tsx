@@ -13,6 +13,8 @@ import Link from "next/link";
 import Header2 from "@/components/Header2";
 import About from "@/components/About2";
 import Professional from "@/components/Professional";
+import Header3 from "@/components/Header3";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -23,19 +25,25 @@ export default function Home() {
   };
   return (
     <div className="relative w-full h-full  bg-center bg-cover">
-      <Header2 />
+      <Header3 />
 
       <div className="container mx-auto text-white mt-32 ">
         <About />
 
         <Professional />
-        
+
         <Works />
+
+      </div>
+
+      <Gallery />
+      <div className="container mx-auto text-white mt-32 ">
+
 
         <Testimonials />
 
         <Contact />
-      </div>
+        </div>
       <footer className="w-full bg-[#15161A] border-t border-[#626468] text-white text-sm py-6 px-4">
         <div className="flex flex-wrap gap-4 justify-center mb-6">
           <Link href="/" className="text-white">

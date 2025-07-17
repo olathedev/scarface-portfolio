@@ -22,6 +22,33 @@ const MyWork = () => {
       );
   }, []);
 
+  const works = [
+    {
+      title: "Blockfuse Labs",
+      role: "Co-founder & CEO",
+      description:
+        "A blockchain education hub training Africa’s next generation of developers through bootcamps, mentorship, and real-world product building.",
+    },
+    {
+      title: "ETHJos",
+      role: "Co-organizer",
+      description:
+        "A regional Ethereum community organizing developer meetups, Solidity bootcamps, and builder sessions across Jos, Nigeria.",
+    },
+    {
+      title: "EthBenue",
+      role: "Founder",
+      description:
+        "A grassroots Ethereum community in Benue focused on onboarding new Web3 developers and running monthly learning events.",
+    },
+    {
+      title: "SF Crypto Academy",
+      role: "Advisor",
+      description:
+        "Partnered to deliver blockchain training sessions, mentorship, and foundational courses for African developers.",
+    },
+  ];
+
   return (
     <section className="flex flex-col gap-8 py-8 mt-6 md:mt-28 relative px-4 md:px-0" id="projects">
       <header
@@ -34,20 +61,28 @@ const MyWork = () => {
 
       <div
         ref={cardsRef}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+        className="grid grid-cols-2 md:grid-cols-4 gap-6"
       >
-        {Array.from({ length: 4 }).map((_, index) => (
+        {works.map((work, index) => (
           <div
             key={index}
             className="flex flex-col gap-3 items-center text-center"
           >
-            <div className="size-[50px] md:size-[58px] bg-white rounded-full"></div>
+            <div className="size-[50px] md:size-[58px] bg-white rounded-full flex items-center justify-center overflow-hidden">
+              {work.title === "Blockfuse Labs" ? (
+                <img src="https://blockfuselabs.com/assets/blockfuse-logo-BgIWHfHT.png" alt="Blockfuse Labs Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+              ) : work.title === "ETHJos" ? (
+                <img src="https://pbs.twimg.com/profile_images/1745902865355276288/ntCI8AfP_400x400.jpg" alt="ETHJos Logo" className="w-8 h-8 rounded-full md:w-10 md:h-10 object-contain" />
+              ) : work.title === "EthBenue" ? (
+                <img src="https://pbs.twimg.com/profile_images/1836658556608618497/X5zhMUy5_400x400.jpg" alt="ETHBenue Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+              ) : null}
+            </div>
             <h4 className="text-white text-base md:text-lg font-bold">
-              Blockfuse Labs
+              {work.title}
             </h4>
+            <div className="text-primary text-xs md:text-sm font-semibold mb-1">{work.role}</div>
             <div className="w-full bg-[#15161A] border border-[#626468] rounded-2xl h-[120px] md:h-[130px] flex items-center justify-center px-3 text-sm text-white">
-              A training hub building Africa’s next generation of blockchain
-              developers.
+              <span className="line-clamp-3">{work.description}</span>
             </div>
           </div>
         ))}

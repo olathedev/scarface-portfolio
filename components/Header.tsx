@@ -106,7 +106,11 @@ const Header = () => {
             </Link>
           </button>
           <button className="w-full md:w-auto py-2 px-4 border-2 border-[#626468] bg-[#15161A] rounded-lg text-sm md:text-base">
-            <a href="https://blockfuselabs.com/" target="_blank" className="text-white block text-center">
+            <a
+              href="https://blockfuselabs.com/"
+              target="_blank"
+              className="text-white block text-center"
+            >
               Inside Blockfuse Labs
             </a>
           </button>

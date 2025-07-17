@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Montserrat } from 'next/font/google';
 
 const satoshi = localFont({
   src: [
@@ -41,3 +42,10 @@ const satoshi = localFont({
 });
 
 export { satoshi };
+
+export const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});

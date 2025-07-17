@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${satoshi.variable} ${maitree.className} antialiased bg-[#08090D]`}
+        className={`${satoshi.className} ${maitree.variable} antialiased bg-[#08090D]`}
       >
         {children}
       </body>
