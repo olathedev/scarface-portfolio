@@ -48,11 +48,11 @@ const About = () => {
 
       {/* Content */}
       <div className="flex flex-col md:flex-row gap-10 md:gap-16">
-        <div className="h-64 sm:h-80 md:h-[28rem] w-full md:w-1/2 mb-6 md:mb-0">
+        <div className="h-64 sm:h-80 md:h-[34rem] w-full md:w-1/2 mb-6 md:mb-0">
           <div className="h-full rounded-xl w-full md:w-[98%] overflow-hidden flex items-center justify-center relative">
             <Image
               ref={imageRef}
-              src="/im2.JPG"
+              src="/images/about.jpeg"
               alt="About Image"
               fill
               style={{ objectFit: "cover" }}

@@ -66,7 +66,7 @@ const Professional = () => {
           />
 
           <ProfessionalCard
-            imageSrc="/im1.JPG"
+            imageSrc="/im6.jpeg"
             imageAlt="About Image"
             title="Built Thriving Web3 Communities: ETHJos & ETHBenue"
             description="Founded and nurtured ETHJos and ETHBenue, two fast-growing Ethereum communities focused on developer empowerment, grassroots education, and localized innovation. These communities serve as bridges between local talent and the global Ethereum ecosystem."
@@ -79,7 +79,7 @@ const Professional = () => {
           />
 
           <ProfessionalCard
-            imageSrc="/im3.JPG"
+            imageSrc="/im7.jpeg"
             imageAlt="About Image"
             title="100+ Developers Trained"
             description="Through Blockfuse Labs and ecosystem partnerships, led immersive developer programs that have trained over 100 blockchain engineers in Solidity, Cairo, smart contracts, and decentralized infrastructure."
@@ -98,7 +98,7 @@ const Professional = () => {
         />
 
         <ProfessionalCard
-          imageSrc="/im4.JPG"
+          imageSrc="/im5.jpeg"
           imageAlt="About Image"
           title="Web3 Product Strategist"
           description="Developed and executed product strategies for innovative Web3 solutions, driving adoption and user engagement. Collaborated with cross-functional teams to deliver impactful blockchain products from concept to launch. Passionate about leveraging decentralized technologies to solve real-world problems and create value."
@@ -113,13 +113,8 @@ const Professional = () => {
           tags={["Education", "Empowerment", "Trading"]}
         />
 
-        <ProfessionalCard
-          imageSrc="/im4.JPG"
-          imageAlt="About Image"
-          title="Web3 Product Strategist"
-          description="Developed strategies for impactful Web3 solutions, collaborating across teams to launch decentralized products focused on real-world utility, scalability, and user-centered design."
-          tags={["Product Development", "Innovation", "Engineering"]}
-        />
+
+       
       </div>
     </div>
   );

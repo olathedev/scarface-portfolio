@@ -15,9 +15,10 @@ import About from "@/components/About2";
 import Professional from "@/components/Professional";
 import Header3 from "@/components/Header3";
 import Gallery from "@/components/Gallery";
+import Blog from "@/components/Blog";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(true);
   const nextSectionRef = useRef<HTMLDivElement>(null);
 
   const handleScrollDown = () => {
@@ -25,6 +26,9 @@ export default function Home() {
   };
   return (
     <div className="relative w-full h-full  bg-center bg-cover">
+      {/* {showPreloader && (
+        <Preloader onFinish={() => setShowPreloader(false)} />
+      )} */}
       <Header3 />
 
       <div className="container mx-auto text-white mt-32 ">
@@ -33,17 +37,15 @@ export default function Home() {
         <Professional />
 
         <Works />
-
       </div>
 
       <Gallery />
       <div className="container mx-auto text-white mt-32 ">
-
-
+        <Blog />
         <Testimonials />
 
         <Contact />
-        </div>
+      </div>
       <footer className="w-full bg-[#15161A] border-t border-[#626468] text-white text-sm py-6 px-4">
         <div className="flex flex-wrap gap-4 justify-center mb-6">
           <a href="#home" className="text-white">
@@ -62,11 +64,22 @@ export default function Home() {
 
         <div className="w-full bg-[#1E1E1E] px-4 py-4 text-[13px] flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 rounded-lg">
           <p className="text-center md:text-left">
-            Email me at: <a href="mailto:peter@blockfuselabs.com" className="underline">peter@blockfuselabs.com</a> | Phone: <a href="tel:+2348025463838" className="underline">+234 8025463838</a>
+            Email me at:{" "}
+            <a href="mailto:peter@blockfuselabs.com" className="underline">
+              peter@blockfuselabs.com
+            </a>{" "}
+            | Phone:{" "}
+            <a href="tel:+2348025463838" className="underline">
+              +234 8025463838
+            </a>
           </p>
 
           <div className="flex items-center gap-4 justify-center">
-            <a href="https://web.facebook.com/AdaakuPeterjr" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://web.facebook.com/AdaakuPeterjr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {/* Facebook */}
               <svg
                 width="7"
@@ -81,7 +94,11 @@ export default function Home() {
                 />
               </svg>
             </a>
-            <a href="https://x.com/scarfacedoteth" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://x.com/scarfacedoteth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {/* Twitter/X */}
               <svg
                 width="18"
@@ -96,7 +113,11 @@ export default function Home() {
                 />
               </svg>
             </a>
-            <a href="https://www.linkedin.com/in/peter-adaaku/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/peter-adaaku/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {/* LinkedIn */}
               <svg
                 width="16"
@@ -111,7 +132,11 @@ export default function Home() {
                 />
               </svg>
             </a>
-            <a href="https://github.com/scarfacedotcom" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/scarfacedotcom"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {/* GitHub */}
               <svg
                 width="16"

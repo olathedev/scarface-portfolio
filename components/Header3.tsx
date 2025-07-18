@@ -180,9 +180,9 @@ const Header3 = () => {
         className="absolute right-0 -bottom-6 hidden sm:block"
       />
       <img
-        src="/images/hero.png"
+        src="/images/heroimg.png"
         alt=""
-        className="absolute w-2/3 sm:w-1/2 object-cover bottom-0 md:-bottom-[25rem] left-1/2 -translate-x-1/2 z-10 opacity-20 "
+        className="absolute w-2/3 sm:w-1/2 object-cover bottom-0 md:-bottom-[5rem] right-0 z-10 opacity-20 filter grayscale"
       />
     </div>
   );

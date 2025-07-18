@@ -114,6 +114,27 @@ const Gallery = () => {
             </div>
           ))}
         </Marquee>
+
+        <Marquee gradient={false} speed={20} pauseOnHover={true} className="w-full">
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              className="relative rounded-xl overflow-hidden w-[70vw] h-[38vw] max-w-[320px] max-h-[180px] sm:w-[38vw] sm:h-[20vw] md:w-[260px] md:h-[180px] lg:w-[320px] lg:h-[220px] mx-2 group"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover rounded-xl"
+                priority={idx === 0}
+              />
+              {/* Hover Sheet */}
+              <div className="absolute left-0 bottom-0 w-full h-[70%] bg-black/80 text-white flex items-end p-2 sm:p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                <span className="text-xs sm:text-base font-semibold">{img.details}</span>
+              </div>
+            </div>
+          ))}
+        </Marquee>
       </div>
 
 
