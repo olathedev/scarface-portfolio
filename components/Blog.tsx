@@ -12,21 +12,21 @@ const Blog = () => {
         <div className="w-[40px] sm:w-[60px] md:w-[80px] h-[6px] sm:h-[8px] md:h-[11px] opacity-40 bg-primary rounded-xl"></div>
       </header>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {Array.from({ length: 3 }).map((blog, index) => (
-          <div className="w-full bg-[#0E0E0E] p-4 rounded-xl">
-            <div className="h-56 w-full bg- rounded relative overflow-hidden">
+          <div className="w-full bg-[#0E0E0E] p-4 rounded-xl flex flex-col">
+            <div className="h-48 sm:h-56 w-full rounded relative overflow-hidden">
               <Image src="/hackmd.png" alt="" fill className="object-cover" />
             </div>
 
-            <div className="flex flex-col">
-              <h2 className="mt-4 text-xl text-white font-semibold mb-2">
+            <div className="flex flex-col flex-1">
+              <h2 className="mt-4 text-lg sm:text-xl text-white font-semibold mb-2">
                 HackMD helped us build trust
               </h2>
-              <div className="flex text-sm text-gray-500 gap-4">
-                <p> 10th August 2025</p> | <p>15mins read</p>
+              <div className="flex text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4 flex-wrap">
+                <p>10th August 2025</p> | <p>15mins read</p>
               </div>
-              <p className="line-clamp-4 mt-4 text-gray-300 ">
+              <p className="line-clamp-4 mt-4 text-gray-300 text-sm sm:text-base">
                 I’m Peter, though most people in the ecosystem know me as
                 Scarface. I’m the Co-founder and CEO of Blockfuse Labs here in
                 Jos, Nigeria. I’ve spent the last few years building in the
@@ -37,7 +37,7 @@ const Blog = () => {
                 of trust.
               </p>
 
-              <p className="flex items-center text-gray-400 mt-4 cursor-pointer hover:text-primary transition-colors duration-300 ease-in-out">
+              <p className="flex items-center text-gray-400 mt-4 cursor-pointer hover:text-primary transition-colors duration-300 ease-in-out text-sm sm:text-base">
                 Read More
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,13 +55,10 @@ const Blog = () => {
             </div>
           </div>
         ))}
-
-
       </div>
 
     <div className="flex justify-center">
-
-      <button className="bg-primary py-3 px-10 rounded mt-4 cursor-pointer">Read More Posts</button>
+      <button className="bg-primary py-3 px-6 w-full sm:w-auto rounded mt-4 cursor-pointer text-sm sm:text-base">Read More Posts</button>
     </div>
     </section>
   );
