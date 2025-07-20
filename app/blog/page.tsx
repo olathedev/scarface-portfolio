@@ -63,14 +63,17 @@ const Blog = (props: Props) => {
   ];
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out", duration: 0.7 },
-    });
-    tl.from(headerRef.current, { opacity: 0, y: -30 }).from(
-      introRef.current,
-      { opacity: 0, y: 20 },
-      "-=0.5"
-    );
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out", duration: 0.7 },
+      });
+      tl.from(headerRef.current, { opacity: 0, y: -30 }).from(
+        introRef.current,
+        { opacity: 0, y: 20 },
+        "-=0.5"
+      );
+    }, headerRef);
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -107,7 +110,7 @@ const Blog = (props: Props) => {
         </div>
       </div>
 
-      <div className="my-16 flex flex-col gap-8 container mx-auto ">
+      <div className="my-16 flex flex-col gap-8 container mx-auto px-4">
         {/* featured */}
         <FeaturedPost
           title="HackMD helped us build trust"

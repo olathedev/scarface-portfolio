@@ -63,7 +63,7 @@ const Gallery = () => {
   const headerRef = useRef<HTMLElement | null>(null);
 
   return (
-    <section className="flex flex-col gap-8 py-4 mt-8 md:py-8 relative px-4 md:px-0 text-white" id="gallery">
+    <section className="flex flex-col gap-8 py-4 mt-8 md:py-8 relative px-4 md:px-0" id="gallery">
       {/* Header */}
       <header
         ref={headerRef}

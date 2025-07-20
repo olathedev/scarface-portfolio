@@ -4,11 +4,15 @@ import Image from "next/image";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTheme } from "@/lib/theme";
 
 const Nav = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+  const sunIconRef = useRef<SVGSVGElement>(null);
+  const moonIconRef = useRef<SVGSVGElement>(null);
 
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true;
@@ -22,6 +26,32 @@ const Nav = () => {
     });
     tl.from(navRef.current, { opacity: 0, y: -40 });
   }, []);
+
+  const handleThemeToggle = () => {
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.inOut", duration: 0.3 },
+    });
+
+    if (theme === 'dark') {
+      // Switching to light mode: sun slides down in, moon slides up out
+      tl.to(moonIconRef.current, { y: -20, opacity: 0, scale: 0.8 })
+        .fromTo(sunIconRef.current, 
+          { y: 20, opacity: 0, scale: 0.8 }, 
+          { y: 0, opacity: 1, scale: 1 }, 
+          "-=0.2"
+        );
+    } else {
+      // Switching to dark mode: moon slides down in, sun slides up out
+      tl.to(sunIconRef.current, { y: -20, opacity: 0, scale: 0.8 })
+        .fromTo(moonIconRef.current, 
+          { y: 20, opacity: 0, scale: 0.8 }, 
+          { y: 0, opacity: 1, scale: 1 }, 
+          "-=0.2"
+        );
+    }
+
+    toggleTheme();
+  };
 
   return (
     <div className="fixed top-6 left-0 right-0 z-40 px-4">
@@ -56,15 +86,24 @@ const Nav = () => {
 
           {/* Right: Dark/Light Switch + Hamburger (hamburger only on mobile) */}
           <div className="flex items-center gap-2">
-            <div className="size-[40px] text-white rounded-full border border-[#3c3d3e] flex items-center justify-center mr-2">
-              {/* Dark/Light mode switch placeholder */}
+            <button
+              onClick={handleThemeToggle}
+              className="size-[40px] text-white rounded-full bg-black/50 backdrop-blur-sm border border-[#3c3d3e] flex items-center justify-center mr-2 transition-colors duration-300 hover:bg-black/10 relative overflow-hidden"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {/* Sun icon for light mode */}
               <svg
+                ref={sunIconRef}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-6 absolute"
+                style={{ 
+                  opacity: theme === 'light' ? 1 : 0,
+                  transform: theme === 'light' ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.8)'
+                }}
               >
                 <path
                   strokeLinecap="round"
@@ -72,9 +111,30 @@ const Nav = () => {
                   d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                 />
               </svg>
-            </div>
+              
+              {/* Moon icon for dark mode */}
+              <svg
+                ref={moonIconRef}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6 absolute"
+                style={{ 
+                  opacity: theme === 'dark' ? 1 : 0,
+                  transform: theme === 'dark' ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.8)'
+                }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                />
+              </svg>
+            </button>
             <button
-              className="size-[40px] flex items-center justify-center bg-black/50 backdrop-blur-sm border border-[#3c3d3e] rounded-full md:hidden"
+              className="size-[40px] flex items-center justify-center border border-[#3c3d3e] rounded-full bg-transparent md:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
@@ -96,7 +156,7 @@ const Nav = () => {
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#ffffff" className="size-8 text-white">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

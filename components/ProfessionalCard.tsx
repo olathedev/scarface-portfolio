@@ -50,8 +50,14 @@ export const ProfessionalCard: React.FC<ProfessionalCardProps> = ({
   }, []);
 
   return (
-    <div ref={cardRef} className="w-full bg-[#0E0E0E] p-6 rounded-2xl flex flex-col">
-      <div ref={imageRef} className="h-[300px] w-full bg-white rounded-xl relative">
+    <div
+      ref={cardRef}
+      className="w-full bg-card-bg p-6 rounded-2xl flex flex-col"
+    >
+      <div
+        ref={imageRef}
+        className="h-[300px] w-full bg-white rounded-xl relative"
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -61,8 +67,12 @@ export const ProfessionalCard: React.FC<ProfessionalCardProps> = ({
           priority
         />
       </div>
-      <h5 ref={titleRef} className="text-xl font-meidum mt-8">{title}</h5>
-      <p ref={descRef} className="text-sm text-gray-400 mt-2">{description}</p>
+      <h5 ref={titleRef} className="text-xl font-meidum mt-8">
+        {title}
+      </h5>
+      <p ref={descRef} className="text-sm text-gray-400 mt-2">
+        {description}
+      </p>
       <div ref={tagsRef} className="flex flex-wrap gap-4 mt-6">
         {tags.map((tag) => (
           <span

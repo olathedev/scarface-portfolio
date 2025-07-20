@@ -13,46 +13,49 @@ const Header3 = () => {
   const scrollIconRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power2.out", duration: 0.8 },
-    });
-    tl.from(logoRef.current, { opacity: 0, scale: 0.7 })
-      .from(
-        textRef.current ? Array.from(textRef.current.children) : [],
-        {
-          opacity: 0,
-          y: 20,
-          stagger: 0.2,
-        },
-        "-=0.3"
-      )
-      .from(
-        buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
-        {
-          opacity: 0,
-          y: 30,
-          stagger: 0.15,
-        },
-        "-=0.5"
-      )
-      .from(
-        socialsRef.current ? Array.from(socialsRef.current.children) : [],
-        {
-          opacity: 0,
-          y: 30,
-          stagger: 0.1,
-        },
-        "-=0.4"
-      );
-    if (scrollIconRef.current) {
-      gsap.to(scrollIconRef.current, {
-        y: 20,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.2,
-        ease: "power1.inOut",
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out", duration: 0.8 },
       });
-    }
+      tl.from(logoRef.current, { opacity: 0, scale: 0.7 })
+        .from(
+          textRef.current ? Array.from(textRef.current.children) : [],
+          {
+            opacity: 0,
+            y: 20,
+            stagger: 0.2,
+          },
+          "-=0.3"
+        )
+        .from(
+          buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
+          {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+          },
+          "-=0.5"
+        )
+        .from(
+          socialsRef.current ? Array.from(socialsRef.current.children) : [],
+          {
+            opacity: 0,
+            y: 30,
+            stagger: 0.1,
+          },
+          "-=0.4"
+        );
+      if (scrollIconRef.current) {
+        gsap.to(scrollIconRef.current, {
+          y: 20,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.2,
+          ease: "power1.inOut",
+        });
+      }
+    }, logoRef);
+    return () => ctx.revert();
   }, []);
 
   return (

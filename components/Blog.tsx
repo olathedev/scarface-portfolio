@@ -33,7 +33,7 @@ const Blog = () => {
       id="blog"
     >
       <header className="flex flex-col md:flex-row items-center gap-3 md:mb-10 justify-center">
-        <h4 className="text-xl sm:text-2xl md:text-3xl font-bold">Blog</h4>
+        <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-text-primary">Blog</h4>
         <div className="w-[40px] sm:w-[60px] md:w-[80px] h-[6px] sm:h-[8px] md:h-[11px] opacity-40 bg-primary rounded-xl"></div>
       </header>
 
@@ -55,7 +55,7 @@ const Blog = () => {
       </div>
 
       <div className="flex justify-center">
-        <button className="bg-primary py-3 px-6 w-full sm:w-auto rounded mt-4 cursor-pointer text-sm sm:text-base">
+        <button className="bg-primary py-3 px-6 text-white w-full sm:w-auto rounded mt-4 cursor-pointer text-sm sm:text-base">
           Read More Posts
         </button>
       </div>

@@ -2,24 +2,53 @@
 
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const MyWork = () => {
   const headerRef = useRef<HTMLHeadingElement | null>(null);
   const cardsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 0.7 } });
+    const ctx = gsap.context(() => {
+      const header = headerRef.current;
+      const cards = cardsRef.current ? Array.from(cardsRef.current.children) : [];
+      if (!header || !cards.length) return;
 
-    tl.from(headerRef.current, { opacity: 0, y: -30 })
-      .from(
-        cardsRef.current ? Array.from(cardsRef.current.children) : [],
+      gsap.fromTo(
+        header,
+        { opacity: 0, y: -30 },
         {
-          opacity: 0,
-          y: 40,
-          stagger: 0.2,
-        },
-        "-=0.3"
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: header,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
       );
+
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, cardsRef);
+    return () => ctx.revert();
   }, []);
 
   const works = [
@@ -75,18 +104,18 @@ const MyWork = () => {
             rel="noopener noreferrer"
             className="flex flex-col gap-3 items-center text-center hover:scale-105 transition-transform"
           >
-            <div className="size-[50px] md:size-[58px] bg-white rounded-full flex items-center justify-center overflow-hidden">
+            <div className="size-[50px] md:size-[58px] bg-text-primary rounded-full flex items-center justify-center overflow-hidden">
               {work.title === "Blockfuse Labs" ? (
                 <img src="https://blockfuselabs.com/assets/blockfuse-logo-BgIWHfHT.png" alt="Blockfuse Labs Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
               ) : work.title === "ETHJos" ? (
                 <img src="https://pbs.twimg.com/profile_images/1745902865355276288/ntCI8AfP_400x400.jpg" alt="ETHJos Logo" className="w-8 h-8 rounded-full md:w-10 md:h-10 object-contain" />
               ) : work.title === "EthBenue" ? (
-                <img src="https://pbs.twimg.com/profile_images/1836658556608618497/X5zhMUy5_400x400.jpg" alt="ETHBenue Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                <img src="https://pbs.twimg.com/profile_images/1836658556608618497/X5zhMUy5_400x400.jpg" alt="ETHBenue Logo" className="w-8 h-8 md:w-10 md:h-10 rounded-full object-contain" />
               ) :  work.title === "SF Crypto Academy" ? (
                 <img src="/sf.jpeg" alt="SF Crypto Academy Logo" className="w-8 h-8 md:w-10 md:h-10 rounded-full object-contain" />
               ) : null}
             </div>
-            <h4 className="text-white text-base md:text-lg font-bold">
+            <h4 className="text-text-primary text-base md:text-lg font-bold">
               {work.title}
             </h4>
             <div className="text-primary text-xs md:text-sm font-semibold mb-1">{work.role}</div>

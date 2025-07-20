@@ -4,6 +4,7 @@ import "./globals.css";
 import { satoshi } from "@/lib/fonts";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { ThemeProvider } from "@/lib/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,13 +33,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${satoshi.className} ${maitree.variable} antialiased bg-[#08090D]`}
+        className={`${satoshi.className} ${maitree.variable} antialiased bg-background`}
       >
-        <Nav />
+        <ThemeProvider>
+          <Nav />
 
-        {children}
+          {children}
 
-        <Footer />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

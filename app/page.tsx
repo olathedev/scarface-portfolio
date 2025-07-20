@@ -31,7 +31,7 @@ export default function Home() {
       )} */}
       <Header3 />
 
-      <div className="container mx-auto text-white mt-32 ">
+      <div className="container mx-auto text-text-primary mt-32 ">
         <About />
 
         <Professional />
@@ -40,13 +40,12 @@ export default function Home() {
       </div>
 
       <Gallery />
-      <div className="container mx-auto text-white mt-32 ">
+      <div className="container mx-auto text-text-primary mt-32 ">
         <Blog />
         <Testimonials />
 
         <Contact />
       </div>
-     
     </div>
   );
 }

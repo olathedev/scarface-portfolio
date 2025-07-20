@@ -91,10 +91,10 @@ const Testimonials = () => {
       id="testimonials"
     >
       <header className="flex items-center gap-3 mb-6 justify-center">
-        <h4 className="text-2xl md:text-3xl font-bold text-center">
+        <h4 className="text-2xl md:text-3xl font-bold text-center text-[var(--text-primary)]">
           Testimonials / Recognition
         </h4>
-        <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-[#15161A] rounded-xl"></div>
+        <div className="w-[60px] md:w-[80px] h-[8px] md:h-[11px] bg-[var(--card-bg)] rounded-xl"></div>
       </header>
 
       {/* Cards container */}
@@ -110,10 +110,10 @@ const Testimonials = () => {
               className={`testimonial-card w-full ${
                 isMiddle
                   ? "bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C]"
-                  : "bg-[#08090D]"
-              } border border-[#6264684D] p-5 sm:p-6 rounded-2xl flex flex-col gap-4`}
+                  : "bg-[var(--card-bg)]"
+              } border border-[var(--card-border)] p-5 sm:p-6 rounded-2xl flex flex-col gap-4`}
             >
-              <p className="text-sm text-white">{testimonial.text}</p>
+              <p className="text-sm text-[var(--text-primary)]">{testimonial.text}</p>
               <div className="flex gap-2 items-center">
                 <div className="size-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
                   {testimonial.image ? (
@@ -121,12 +121,12 @@ const Testimonials = () => {
                   ) : null}
                 </div>
                 <div>
-                  <h4 className="text-white text-sm font-bold">
+                  <h4 className="text-[var(--text-primary)] text-sm font-bold">
                     {testimonial.name}
                   </h4>
                   <p
                     className={`text-xs ${
-                      isMiddle ? "text-white" : "text-[#47484C]"
+                      isMiddle ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"
                     }`}
                   >
                     {testimonial.title}
@@ -147,7 +147,7 @@ const Testimonials = () => {
               className={`w-2 h-2 rounded-full ${
                 currentSlide === index
                   ? "bg-gradient-to-l from-[#312E6C] via-[#5F59D2] to-[#312E6C]"
-                  : "bg-[#ffffff]"
+                  : "bg-[var(--card-border)]"
               }`}
             ></span>
           ))}
@@ -156,15 +156,15 @@ const Testimonials = () => {
         <div className="flex justify-center items-center gap-4 md:gap-8">
           <button
             onClick={prevSlide}
-            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white flex items-center cursor-pointer justify-center"
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-[var(--card-bg)] flex items-center cursor-pointer justify-center border border-[var(--card-border)]"
           >
-            <ArrowLeft className="text-black w-4 h-4 md:w-5 md:h-5" />
+            <ArrowLeft className="text-[var(--text-primary)] w-4 h-4 md:w-5 md:h-5" />
           </button>
           <button
             onClick={nextSlide}
-            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white flex cursor-pointer items-center justify-center"
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-[var(--card-bg)] flex cursor-pointer items-center justify-center border border-[var(--card-border)]"
           >
-            <ArrowRight className="text-black w-4 h-4 md:w-5 md:h-5" />
+            <ArrowRight className="text-[var(--text-primary)] w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
       </div>
