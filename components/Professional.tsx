@@ -106,7 +106,7 @@ const Professional = () => {
         />
 
         <ProfessionalCard
-          imageSrc="/im1.JPG"
+          imageSrc="/im8.jpeg"
           imageAlt="About Image"
           title="1000+ People Trained on Crypto Trading"
           description="Led comprehensive programs that introduced over 1,000 individuals to the fundamentals of cryptocurrency trading, empowering them with financial literacy, market insight, and practical skills to navigate the crypto space."
