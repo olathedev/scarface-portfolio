@@ -1,7 +1,32 @@
 import Image from "next/image";
 import React from "react";
+import BlogCard from "./BlogCard";
 
 const Blog = () => {
+  const blogPosts = [
+    {
+      title: "HackMD helped us build trust",
+      subtitle: "I'm Peter, though most people in the ecosystem know me as Scarface. I'm the Co-founder and CEO of Blockfuse Labs here in Jos, Nigeria. I've spent the last few years building in the blockchain space, working to create real opportunities for young African developers, especially in underserved communities. This is the story of how HackMD quietly became one of our most valuable tools for learning, documenting, and building a culture of trust.",
+      date: "10th August 2025",
+      readTime: "15mins read",
+      image: "/hackmd.png",
+    },
+    {
+      title: "Building Web3 Communities in Africa",
+      subtitle: "The journey of creating ETHJos and ETHBenue, two thriving Ethereum communities focused on developer empowerment and grassroots education. How we're bridging local talent with the global Ethereum ecosystem.",
+      date: "15th August 2025",
+      readTime: "12mins read",
+      image: "/hackmd.png",
+    },
+    {
+      title: "The Future of Blockchain Education",
+      subtitle: "Through Blockfuse Labs and ecosystem partnerships, we've trained over 100 blockchain engineers. Here's what we've learned about effective developer education in the Web3 space.",
+      date: "20th August 2025",
+      readTime: "18mins read",
+      image: "/hackmd.png",
+    },
+  ];
+
   return (
     <section
       className="flex flex-col gap-8 py-4  relative px-4 md:px-0"
@@ -13,53 +38,27 @@ const Blog = () => {
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.from({ length: 3 }).map((blog, index) => (
-          <div className="w-full bg-[#0E0E0E] p-4 rounded-xl flex flex-col">
-            <div className="h-48 sm:h-56 w-full rounded relative overflow-hidden">
-              <Image src="/hackmd.png" alt="" fill className="object-cover" />
-            </div>
-
-            <div className="flex flex-col flex-1">
-              <h2 className="mt-4 text-lg sm:text-xl text-white font-semibold mb-2">
-                HackMD helped us build trust
-              </h2>
-              <div className="flex text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4 flex-wrap">
-                <p>10th August 2025</p> | <p>15mins read</p>
-              </div>
-              <p className="line-clamp-4 mt-4 text-gray-300 text-sm sm:text-base">
-                I’m Peter, though most people in the ecosystem know me as
-                Scarface. I’m the Co-founder and CEO of Blockfuse Labs here in
-                Jos, Nigeria. I’ve spent the last few years building in the
-                blockchain space, working to create real opportunities for young
-                African developers, especially in underserved communities. This
-                is the story of how HackMD quietly became one of our most
-                valuable tools for learning, documenting, and building a culture
-                of trust.
-              </p>
-
-              <p className="flex items-center text-gray-400 mt-4 cursor-pointer hover:text-primary transition-colors duration-300 ease-in-out text-sm sm:text-base">
-                Read More
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="size-5"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </p>
-            </div>
-          </div>
+        {blogPosts.map((blog, index) => (
+          <BlogCard
+            key={index}
+            title={blog.title}
+            subtitle={blog.subtitle}
+            date={blog.date}
+            readTime={blog.readTime}
+            image={blog.image}
+            onClick={() => {
+              // Handle click - could navigate to blog post
+              console.log(`Navigate to blog post: ${blog.title}`);
+            }}
+          />
         ))}
       </div>
 
-    <div className="flex justify-center">
-      <button className="bg-primary py-3 px-6 w-full sm:w-auto rounded mt-4 cursor-pointer text-sm sm:text-base">Read More Posts</button>
-    </div>
+      <div className="flex justify-center">
+        <button className="bg-primary py-3 px-6 w-full sm:w-auto rounded mt-4 cursor-pointer text-sm sm:text-base">
+          Read More Posts
+        </button>
+      </div>
     </section>
   );
 };

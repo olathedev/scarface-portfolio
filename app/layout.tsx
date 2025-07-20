@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Maitree } from "next/font/google";
 import "./globals.css";
 import { satoshi } from "@/lib/fonts";
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,8 +24,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +34,11 @@ export default function RootLayout({
       <body
         className={`${satoshi.className} ${maitree.variable} antialiased bg-[#08090D]`}
       >
+        <Nav />
+
         {children}
+
+        <Footer />
       </body>
     </html>
   );

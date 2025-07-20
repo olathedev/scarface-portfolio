@@ -2,9 +2,26 @@
 
 :root {
   --background: #000000;
-  --foreground: #171717;
+  --foreground: #fffff;
   --primary: #5505D6;
   --secondary: #6EEF9C;
+  --card-bg: #0E0E0E;
+
+}
+
+
+[data-theme="light"] {
+  /* Light theme */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card-bg: #f8fafc;
+  --card-border: #e2e8f0;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --primary: #5505D6;
+  --secondary: #6EEF9C;
+  --accent: #f1f5f9;
 }
 
 @theme inline {
