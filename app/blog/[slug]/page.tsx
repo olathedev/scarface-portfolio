@@ -131,7 +131,7 @@ export default function BlogDetails() {
               priority
             />
       )}
-      <h1 className="text-4xl font-bold mb-2 text-center w-full">
+      <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center w-full">
               {post.title}
             </h1>
       <div className="text-gray-400 mb-6 text-center w-full">

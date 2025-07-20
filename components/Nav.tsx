@@ -72,7 +72,9 @@ const Nav = () => {
           className="transition-all duration-500 z-30 w-full flex items-center justify-between"
         >
           <div className="">
-            <Image src="/images/logo.png" alt="" height={60} width={60} />
+            <Link href="/">
+              <Image src="/images/logo.png" alt="" height={60} width={60} />
+            </Link>
           </div>
 
           {/* Desktop Nav */}
