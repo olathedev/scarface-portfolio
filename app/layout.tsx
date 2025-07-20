@@ -20,8 +20,37 @@ export const metadata: Metadata = {
   title: "Scarface",
   description: "Innovating the future, Empowering growth",
   icons: {
-    icon: "logo.png",
+    icon: "/images/logo.png",
     shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+    other: [
+      { rel: "icon", url: "/images/logo.png" },
+      { rel: "shortcut icon", url: "/images/logo.png" },
+      { rel: "apple-touch-icon", url: "/images/logo.png" },
+    ],
+  },
+  openGraph: {
+    title: "Scarface",
+    description: "Innovating the future, Empowering growth",
+    url: "https://scarface-portfolio.vercel.app/",
+    siteName: "Scarface",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Scarface Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Scarface",
+    description: "Innovating the future, Empowering growth",
+    images: ["/images/logo.png"],
+    creator: "@yourtwitterhandle",
   },
 };
 
