@@ -17,6 +17,7 @@ const maitree = Maitree({
   weight: ["400", "500", "600", "700"],
 });
 export const metadata: Metadata = {
+  metadataBase: new URL("https://scarface-portfolio.vercel.app"),
   title: "Scarface",
   description: "Innovating the future, Empowering growth",
   icons: {

@@ -17,8 +17,9 @@ const getPostMeta = async (slug: string) => {
   return post;
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPostMeta(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostMeta(slug);
   const imageUrl = post?.image ? urlFor(post.image) : "/images/logo.png";
   return {
     title: post?.title || "Scarface Blog",
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: post?.title || "Scarface Blog",
       description: post?.snippet || "Read the latest from Scarface.",
-      url: `https://scarface-portfolio.vercel.app/${params.slug}`,
+      url: `https://scarface-portfolio.vercel.app/${slug}`,
       type: "article",
       images: [
         {
