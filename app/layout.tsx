@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Scarface",
     description: "Innovating the future, Empowering growth",
-    images: ["/images/logo.png"],
+    images: ["/im4.JPG"],
     creator: "@yourtwitterhandle",
   },
 };
