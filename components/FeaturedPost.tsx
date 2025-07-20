@@ -10,6 +10,14 @@ interface FeaturedPostProps {
   onClick?: () => void;
 }
 
+const splitTitle = (title: string) => {
+  if (!title) return ['', ''];
+  const words = title.split(' ');
+  if (words.length < 2) return [title, ''];
+  const mid = Math.floor(words.length / 2);
+  return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+};
+
 const FeaturedPost: React.FC<FeaturedPostProps> = ({
   title,
   subtitle,
@@ -19,6 +27,7 @@ const FeaturedPost: React.FC<FeaturedPostProps> = ({
   featuredTag = "Featured Story",
   onClick,
 }) => {
+  const [firstLine, secondLine] = splitTitle(title);
   return (
     <div
       className="h-[300px] cursor-pointer w-full bg-center bg-cover rounded-xl overflow-hidden relative hover:scale-[1.02] transition-transform duration-300"
@@ -34,22 +43,10 @@ const FeaturedPost: React.FC<FeaturedPostProps> = ({
         <div className="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-xs w-fit mb-4">
           {featuredTag}
         </div>
-        <h2 className="text-xl md:text-2xl font-semibold mb-2 flex items-center gap-8">
-          {title}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="size-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-              clipRule="evenodd"
-            />
-          </svg>
+        <h2 className="text-xl md:text-3xl font-bold mb-2">
+          {firstLine}<br />{secondLine}
         </h2>
-        <p className="text-gray-300 text-sm md:text-base max-w-2xl">
+        <p className="text-gray-300 text-sm md:text-base max-w-2xl line-clamp-3">
           {subtitle}
         </p>
 

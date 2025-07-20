@@ -19,13 +19,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
   onClick,
 }) => {
   return (
-    <div className="w-full bg-card-blog p-4 rounded-xl flex flex-col hover:scale-[1.02] transition-transform duration-300">
-      <div className="h-48 sm:h-56 w-full rounded relative overflow-hidden">
+    <div className="w-full  p-4 rounded-xl flex flex-col hover:scale-[1.02] transition-transform duration-300">
+      <div className="h-48 sm:h-56 w-full rounded-t relative overflow-hidden">
         <Image src={image} alt={title} fill className="object-cover" />
       </div>
 
       <div className="flex flex-col flex-1">
-        <h2 className="mt-4 text-lg sm:text-xl text-text-primary font-semibold mb-2">
+        <h2 className="mt-4 text-lg sm:text-xl text-text-primary font-semibold mb-2 line-clamp-2">
           {title}
         </h2>
         <div className="flex text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4 flex-wrap">

@@ -5,63 +5,73 @@ import gsap from "gsap";
 import FeaturedPost from "@/components/FeaturedPost";
 import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
+import { type SanityDocument } from "next-sanity";
+
+import { client } from "@/sanity/client";
+import { urlFor } from '@/lib/sanityImage';
+
+const POSTS_QUERY = `*[
+    _type == "post"
+    && defined(slug.current)
+  ]|order(publishedAt desc)[0...12]{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    image {
+      asset->{
+        _id,
+        url
+      }
+    },
+    snippet,
+    body
+  }`;
+
+const options = { next: { revalidate: 30 } };
+
 
 type Props = {};
+
+// Utility function to calculate read time from body
+function calculateReadTime(body: any[]): string {
+  // Extract all text from blocks
+  const text = body
+    ?.map(block => {
+      if (block._type === 'block' && Array.isArray(block.children)) {
+        return block.children.map((child: any) => child.text).join(' ');
+      }
+      return '';
+    })
+    .join(' ');
+  const words = text ? text.trim().split(/\s+/).length : 0;
+  const wordsPerMinute = 200;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+}
 
 const Blog = (props: Props) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLParagraphElement | null>(null);
 
-  const blogPosts = [
-    {
-      title: "Building Sustainable Web3 Communities",
-      subtitle: "Lessons learned from creating and nurturing ETHJos and ETHBenue. How to build lasting communities that empower local developers and bridge the gap with global ecosystems.",
-      date: "25th August 2025",
-      readTime: "8 mins read",
-    },
-    {
-      title: "The Future of DeFi in Africa",
-      subtitle: "Exploring how decentralized finance can transform financial inclusion across the continent. Real-world applications and the challenges we need to overcome.",
-      date: "22nd August 2025",
-      readTime: "12 mins read",
-    },
-    {
-      title: "Smart Contract Security Best Practices",
-      subtitle: "Essential security patterns and practices for building robust smart contracts. Lessons from auditing and deploying contracts in production environments.",
-      date: "20th August 2025",
-      readTime: "15 mins read",
-    },
-    {
-      title: "Onboarding 10,000+ Africans to Blockchain",
-      subtitle: "The strategies and campaigns that helped us introduce blockchain technology to thousands of Africans. From grassroots workshops to digital outreach programs.",
-      date: "18th August 2025",
-      readTime: "10 mins read",
-    },
-    {
-      title: "Blockchain Education: Beyond the Basics",
-      subtitle: "Advanced topics in blockchain education, from zero-knowledge proofs to layer 2 scaling solutions. How we're preparing the next generation of Web3 builders.",
-      date: "15th August 2025",
-      readTime: "14 mins read",
-    },
-    {
-      title: "The Role of Mentorship in Web3",
-      subtitle: "How mentorship programs are shaping the future of blockchain development in Africa. Stories from our 100+ trained developers and their journey into Web3.",
-      date: "12th August 2025",
-      readTime: "9 mins read",
-    },
-    {
-      title: "Crypto Trading: A Beginner's Guide",
-      subtitle: "Fundamentals of cryptocurrency trading for African investors. Risk management, market analysis, and building sustainable trading strategies.",
-      date: "10th August 2025",
-      readTime: "11 mins read",
-    },
-    {
-      title: "Web3 Product Strategy in Emerging Markets",
-      subtitle: "Developing and launching Web3 products that resonate with African users. Understanding local needs and building solutions that create real value.",
-      date: "8th August 2025",
-      readTime: "13 mins read",
-    },
-  ];
+  const [posts, setPosts] = React.useState<SanityDocument[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const data = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+        console.log(data)
+        setPosts(data);
+      } catch (error) {
+        setPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -113,27 +123,27 @@ const Blog = (props: Props) => {
 
       <div className="my-16 flex flex-col gap-8 container mx-auto px-4">
         {/* featured */}
+        {!loading && posts.length > 0 && (
+          <Link href={`/blog/${posts[0].slug?.current ?? ''}`}>
         <FeaturedPost
-          title="HackMD helped us build trust"
-          subtitle="I'm Peter, though most people in the ecosystem know me as Scarface. I'm the Co-founder and CEO of Blockfuse Labs here in Jos, Nigeria."
-          date="10th August 2025"
-          readTime="5 mins read"
-          image="/hackmd.png"
-          onClick={() => {
-            // Handle click - could navigate to blog post
-            console.log("Navigate to HackMD blog post");
-          }}
-        />
-
+              title={posts[0].title}
+              subtitle={posts[0].snippet}
+              date={posts[0].publishedAt ? new Date(posts[0].publishedAt).toLocaleDateString() : ''}
+              readTime={calculateReadTime(posts[0].body)}
+              image={posts[0].image ? urlFor(posts[0].image) : "/hackmd.png"}
+              onClick={() => {}}
+            />
+          </Link>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((blog, index) => (
-            <Link key={index} href={`/blog/${encodeURIComponent(blog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''))}`} className="block h-full">
+          {posts.slice(1).map((blog, index) => (
+            <Link key={index} href={`/blog/${blog.slug?.current ?? ''}`} className="block h-full">
               <BlogCard
                 title={blog.title}
-                subtitle={blog.subtitle}
-                date={blog.date}
-                readTime={blog.readTime}
-                image="/hackmd.png"
+                subtitle={blog.snippet}
+                date={blog.publishedAt ? new Date(blog.publishedAt).toLocaleDateString() : ''}
+                readTime={calculateReadTime(blog.body)}
+                image={blog.image ? urlFor(blog.image) : ""}
               />
             </Link>
           ))}
