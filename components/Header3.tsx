@@ -66,7 +66,7 @@ const Header3 = () => {
           ref={logoRef}
           className="size-16 bg-white rounded-xl flex items-center justify-center mx-auto"
         >
-          <Image src="/images/logo.png" alt="" height={50} width={50} />
+          <Image src="https://pbs.twimg.com/profile_images/1764159102077358080/070FywBh_400x400.jpg" alt="" height={50} width={50} />
         </div>
 
         <div ref={textRef} className="text-center w-full max-w-xl mx-auto">

@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Image from "next/image";
 import Preloader from "@/components/animations/PreLoader";
@@ -16,10 +16,31 @@ import Professional from "@/components/Professional";
 import Header3 from "@/components/Header3";
 import Gallery from "@/components/Gallery";
 import Blog from "@/components/Blog";
+import { client } from "@/sanity/client";
+
+const BLOGS_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...3]{
+  _id,
+  title,
+  slug,
+  publishedAt,
+  image,
+  snippet,
+  body
+}`;
+const options = { next: { revalidate: 30 } };
 
 export default function Home() {
   const [showPreloader, setShowPreloader] = useState(true);
   const nextSectionRef = useRef<HTMLDivElement>(null);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      const data = await client.fetch(BLOGS_QUERY, {}, options);
+      setPosts(data);
+    }
+    fetchBlogs();
+  }, []);
 
   const handleScrollDown = () => {
     nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +62,7 @@ export default function Home() {
 
       <Gallery />
       <div className="container mx-auto text-text-primary mt-32 ">
-        <Blog />
+        <Blog posts={posts} />
         <Testimonials />
 
         <Contact />
