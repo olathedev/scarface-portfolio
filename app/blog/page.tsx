@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import FeaturedPost from "@/components/FeaturedPost";
 import BlogCard from "@/components/BlogCard";
+import Link from "next/link";
 
 type Props = {};
 
@@ -126,17 +127,15 @@ const Blog = (props: Props) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogPosts.map((blog, index) => (
-            <BlogCard
-              key={index}
-              title={blog.title}
-              subtitle={blog.subtitle}
-              date={blog.date}
-              readTime={blog.readTime}
-              image="/hackmd.png"
-              onClick={() => {
-                console.log(`Navigate to blog post: ${blog.title}`);
-              }}
-            />
+            <Link key={index} href={`/blog/${encodeURIComponent(blog.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''))}`} className="block h-full">
+              <BlogCard
+                title={blog.title}
+                subtitle={blog.subtitle}
+                date={blog.date}
+                readTime={blog.readTime}
+                image="/hackmd.png"
+              />
+            </Link>
           ))}
         </div>
       </div>
