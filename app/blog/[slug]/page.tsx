@@ -81,7 +81,7 @@ export default function BlogDetails() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
       {/* Header split layout */}
-      <div className="container mx-auto mt-22 md:mt-38 px-4 md:px-20">
+      <div className="container mx-auto mt-28 md:mt-38 px-4 md:px-20">
         <div className="flex flex-col md:flex-row rounded-3xl overflow-hidden  bg-card-blog">
           {/* Image half */}
           <div className="md:w-1/2 w-full h-56 md:h-[340px] relative">
@@ -94,7 +94,7 @@ export default function BlogDetails() {
             />
           </div>
           {/* Details half */}
-          <div className="md:w-1/2 w-full flex flex-col justify-center p-6 md:p-10 gap-4 bg-background">
+          <div className="md:w-1/2 w-full flex flex-col justify-center py-6 md:p-10 gap-4 bg-background">
             <h1 className="text-2xl md:text-4xl font-bold mb-2">
               {post.title}
             </h1>
