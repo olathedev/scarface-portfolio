@@ -27,6 +27,17 @@ const Nav = () => {
     tl.from(navRef.current, { opacity: 0, y: -40 });
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [menuOpen]);
+
   const handleThemeToggle = () => {
     const tl = gsap.timeline({
       defaults: { ease: "power2.inOut", duration: 0.3 },
@@ -148,26 +159,36 @@ const Nav = () => {
           {/* Mobile Fullscreen Dropdown Menu */}
           {menuOpen && (
             <div
-              className="fixed inset-0 z-50 bg-black bg-opacity-95 flex flex-col items-center justify-center transition-all"
+              className={`fixed inset-0 z-50 flex items-center justify-end transition-all duration-300`}
               style={{}}
             >
-              <button
-                className="absolute top-6 right-6 size-12 flex items-center justify-center border border-[#3c3d3e] rounded-full bg-transparent text-white"
+              {/* Overlay background */}
+              <div
+                className="absolute inset-0 bg-black bg-opacity-80 transition-opacity duration-300"
                 onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
+              />
+              {/* Sliding menu */}
+              <div
+                className={`relative h-full w-4/5 max-w-xs bg-[#111112] shadow-lg flex flex-col items-center justify-center p-8 transition-transform duration-300 transform ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#ffffff" className="size-8 text-white">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <nav className="flex flex-col gap-8 text-2xl text-white items-center">
-                <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-                <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-                <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
-                <a href="#gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
-                <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
-                <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-              </nav>
+                <button
+                  className="absolute top-6 right-6 size-12 flex items-center justify-center border border-[#3c3d3e] rounded-full bg-transparent text-white"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#ffffff" className="size-8 text-white">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <nav className="flex flex-col gap-8 text-2xl text-white items-center w-full mt-12">
+                  <Link href="/" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Home</Link>
+                  <a href="#about" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">About</a>
+                  <a href="#projects" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Projects</a>
+                  <a href="#gallery" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Gallery</a>
+                  <Link href="/blog" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Blog</Link>
+                  <a href="#contact" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Contact</a>
+                </nav>
+              </div>
             </div>
           )}
         </div>
