@@ -159,7 +159,7 @@ const Nav = () => {
           {/* Mobile Fullscreen Dropdown Menu */}
           {menuOpen && (
             <div
-              className="fixed inset-0 z-50 flex items-center justify-center bg-background transition-all duration-300"
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 transition-all duration-300 overflow-y-auto min-h-screen h-full"
               style={{}}
             >
               <button
@@ -171,7 +171,7 @@ const Nav = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <nav className="flex flex-col gap-8 text-2xl text-text-primary items-center w-full">
+              <nav className="flex flex-col gap-8 text-2xl text-white items-center w-full">
                 <Link href="/" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Home</Link>
                 <a href="#about" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">About</a>
                 <a href="#projects" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 rounded-lg hover:bg-primary/20 transition">Projects</a>
