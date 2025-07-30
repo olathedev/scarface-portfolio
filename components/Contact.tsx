@@ -35,6 +35,7 @@ const Contact = () => {
         return;
       }
       setEmail("");
+      setSuccess(true);
 
       console.log("data", data);
     } catch (error) {
